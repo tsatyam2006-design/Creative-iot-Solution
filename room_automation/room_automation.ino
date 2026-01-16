@@ -11,17 +11,17 @@
 #include <SinricProSwitch.h>
 
 // ---------- USER CONFIG ----------
-const char* WIFI_SSID = "Slog";
-const char* WIFI_PASS = "slog@123";
+const char* WIFI_SSID = "Your router ssid name";
+const char* WIFI_PASS = "password_of_your_wifi";
 
-const char* SINRIC_APP_KEY    = "0d881ce6-398a-42db-ac5b-8555ca0aeec2";   // from SinricPro dashboard
-const char* SINRIC_APP_SECRET = "5d5f5597-e332-411f-a2fb-51ded6e7a68a-e156a138-7eb4-4639-9072-d0e4405e81b2";
+const char* SINRIC_APP_KEY    = "Change with your app key";   // from SinricPro dashboard
+const char* SINRIC_APP_SECRET = "change with your app secret key"; // from SinricPro dashboard
 
 // SinricPro device IDs (create 4 Switch devices in SinricPro and paste their IDs)
-const char* DEVICE_ID_0 = "68edb7c0acd5d3d66b4fc6f0";
-const char* DEVICE_ID_1 = "68edb8c0359ccc32ce1007db";
-const char* DEVICE_ID_2 = "68edb831acd5d3d66b4fc733";
-const char* DEVICE_ID_3 = "DEVICE_ID_FOR_RELAY_3";
+const char* DEVICE_ID_0 = "device id for relay 1";
+const char* DEVICE_ID_1 = "device id for relay 2";
+const char* DEVICE_ID_2 = "device id for relay 3";
+const char* DEVICE_ID_3 = "device id for relay 4";
 
 // Relay pin mapping (change to match your wiring)
 const int relayPins[4] = {18, 19, 21, 22};
