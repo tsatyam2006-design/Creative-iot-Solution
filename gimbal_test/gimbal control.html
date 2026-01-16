@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>ESP32-S3 Gimbal</title>
+  <style>
+    body { font-family:sans-serif; background:#111827; color:#e2e8f0; text-align:center; padding:20px;}
+    .knob { display:inline-block; background:#1f2937; padding:20px; margin:10px; border-radius:12px; }
+    input[type=range] { width:200px; }
+    .val { margin-top:10px; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <h1>ESP32-S3 Gimbal Control</h1>
+  <div class="knob">
+    <label>Servo 1 (Pitch)</label><br>
+    <input type="range" id="s1" min="0" max="180" value="90"><br>
+    <div class="val">Angle: <span id="a1">90</span>°</div>
+  </div>
+  <div class="knob">
+    <label>Servo 2 (Yaw)</label><br>
+    <input type="range" id="s2" min="0" max="180" value="90"><br>
+    <div class="val">Angle: <span id="a2">90</span>°</div>
+  </div>
+
+<script>
+const s1 = document.getElementById('s1');
+const s2 = document.getElementById('s2');
+const a1 = document.getElementById('a1');
+const a2 = document.getElementById('a2');
+let timer;
+
+function sendAngles() {
+  fetch('/set?s1=' + s1.value + '&s2=' + s2.value).catch(e=>console.log(e));
+}
+function scheduleSend() {
+  clearTimeout(timer);
+  timer = setTimeout(sendAngles, 5); // ULTRA-FAST: 5ms response
+}
+s1.oninput = ()=>{ a1.textContent=s1.value; scheduleSend(); }
+s2.oninput = ()=>{ a2.textContent=s2.value; scheduleSend(); }
+window.onload = sendAngles;
+</script>
+</body>
+</html>
